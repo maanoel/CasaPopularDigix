@@ -6,7 +6,7 @@ using System;
 
 namespace CasaPopularTests
 {
-  public class CasaPopularTests
+  public class RendaDe901A1500Tests
   {
     private readonly Pessoa Mae;
     private readonly Pessoa Pai;
@@ -20,7 +20,7 @@ namespace CasaPopularTests
     private readonly UmOuDoisDependentes UmOuDoisDependentes;
     private readonly ConstrutorListaFamiliasAptas ConstrutorFamiliasAptas;
 
-    public CasaPopularTests()
+    public RendaDe901A1500Tests()
     {
       Mae = new Pessoa();
       Pai = new Pessoa();
@@ -65,10 +65,10 @@ namespace CasaPopularTests
     }
 
     [Fact]
-    public void Deve_Retornar_Sete_Pontos_Renda_Ate_900_Dois_Dependentes()
+    public void Deve_Retornar_Cinco_Pontos_Renda_Ate_1500_Dois_Dependentes()
     {
-      Pai.Salario = 300;
-      Mae.Salario = 555;
+      Pai.Salario = 400;
+      Mae.Salario = 900;
 
       MembrosFamilia.Add(Pai);
       MembrosFamilia.Add(Mae);
@@ -84,14 +84,14 @@ namespace CasaPopularTests
 
       var familiaApta = familiasAptas.FirstOrDefault();
 
-      Assert.Equal(7, familiaApta.Pontuacao);
+      Assert.Equal(5, familiaApta.Pontuacao);
     }
 
     [Fact]
-    public void Deve_Retornar_Nove_Pontos_Renda_Ate_900_Tres_Dependentes()
+    public void Deve_Retornar_Seis_Pontos_Renda_Ate_900_Tres_Dependentes()
     {
-      Pai.Salario = 300;
-      Mae.Salario = 599;
+      Pai.Salario = 500;
+      Mae.Salario = 500;
 
       MembrosFamilia.Add(Pai);
       MembrosFamilia.Add(Mae);
@@ -108,7 +108,28 @@ namespace CasaPopularTests
 
       var familiaApta = familiasAptas.FirstOrDefault();
 
-      Assert.Equal(8, familiaApta.Pontuacao);
+      Assert.Equal(6, familiaApta.Pontuacao);
+    }
+
+    [Fact]
+    public void Deve_Retornar_Tres_Pontos_Renda_Ate_900_Sem_Dependentes()
+    {
+      Pai.Salario = 900;
+      Mae.Salario = 599;
+
+      MembrosFamilia.Add(Pai);
+      MembrosFamilia.Add(Mae);
+
+      var familia = new Familia();
+      familia.Membros = MembrosFamilia;
+
+      ConstrutorFamiliasAptas.AdicionarFamilia(familia);
+
+      List<Familia> familiasAptas = ConstrutorFamiliasAptas.Criar();
+
+      var familiaApta = familiasAptas.FirstOrDefault();
+
+      Assert.Equal(3, familiaApta.Pontuacao);
     }
   }
 }
