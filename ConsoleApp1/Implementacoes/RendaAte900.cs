@@ -7,7 +7,10 @@ namespace CasaPopularTests
   {
     public int Calcular(Familia familia)
     {
-      throw new System.NotImplementedException();
+      if (familia.RendaTotal() >= 900)
+        return 5;
+
+      return 0;
     }
   }
 }

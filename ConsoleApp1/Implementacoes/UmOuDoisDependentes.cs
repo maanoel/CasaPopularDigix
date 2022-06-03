@@ -7,7 +7,12 @@ namespace CasaPopularTests
   {
     public int Calcular(Familia familia)
     {
-      throw new System.NotImplementedException();
+      var quantidadeDependentes = familia.QuantidadeDependentes();
+
+      if (quantidadeDependentes == 1 || quantidadeDependentes == 2)
+        return 2;
+
+      return 0;
     }
   }
 }

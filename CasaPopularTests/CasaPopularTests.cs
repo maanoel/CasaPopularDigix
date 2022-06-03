@@ -1,4 +1,3 @@
-using CasaPopular.Interfaces;
 using CasaPopular.Model;
 using System.Collections.Generic;
 using Xunit;
@@ -50,7 +49,8 @@ namespace CasaPopularTests
       construtorFamiliasAptas.AdicionarComandoDeCalculo(tresOuMaisDependentes);
       construtorFamiliasAptas.AdicionarComandoDeCalculo(umOuDoisDependentes);
 
-      IEnumerable<Familia> familiasAptas = construtorFamiliasAptas.Criar();
+      IList<Familia> familiasAptas = construtorFamiliasAptas.Criar();
+      
 
     }
   }
