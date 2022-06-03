@@ -85,7 +85,7 @@ namespace CasaPopularTests
     }
 
     [Fact]
-    public void Deve_Retornar_Nove_Sem_Renda_900_Tres_Dependentes()
+    public void Deve_Retornar_Oito_Sem_Renda_900_Tres_Dependentes()
     {
       MembrosFamilia.Add(Pai);
       MembrosFamilia.Add(Mae);

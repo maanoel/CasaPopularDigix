@@ -91,7 +91,7 @@ namespace CasaPopularTests
     }
 
     [Fact]
-    public void Deve_Retornar_Tres_Pontos_Na_Ultima_Posicao()
+    public void Deve_Retornar_Dois_Pontos_Na_Ultima_Posicao()
     {
       List<Familia> familiasAptas = ConstrutorFamiliasAptas.Criar();
 
