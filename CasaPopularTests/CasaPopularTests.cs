@@ -1,10 +1,11 @@
+using CasaPopular.Interfaces;
 using CasaPopular.Model;
 using System.Collections.Generic;
 using Xunit;
 
 namespace CasaPopularTests
 {
-  public class UnitTest1
+  public class CasaPopularTests
   {
     private readonly Pessoa Mae;
     private readonly Pessoa Pai;
@@ -12,7 +13,7 @@ namespace CasaPopularTests
     private readonly Pessoa Filho;
     private readonly List<Pessoa> MembrosFamilia;
 
-    public UnitTest1()
+    public CasaPopularTests()
     {
       Mae = new Pessoa();
       Pai = new Pessoa();
@@ -37,6 +38,10 @@ namespace CasaPopularTests
       Familia familia = new Familia();
       familia.Membros = MembrosFamilia;
 
+      IComandoCalculoPotuacao rendaAte900 = new RendaAte900();
+      IComandoCalculoPotuacao rendaDe901A1500 = new RendaDe901A1500();
+      IComandoCalculoPotuacao tresOuMaisDependentes = new TresOuMaisDependentes();
+      IComandoCalculoPotuacao umOuDoisDependentes = new UmOuDoisDependentes();
     }
   }
 }
