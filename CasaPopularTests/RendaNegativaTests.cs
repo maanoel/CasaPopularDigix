@@ -118,8 +118,8 @@ namespace CasaPopularTests
     [Fact]
     public void Deve_Retornar_Sete_Pontos_Renda_Negativa_Sem_Dependentes()
     {
-      Pai.Salario = 300;
-      Mae.Salario = 599;
+      Pai.Salario = -300;
+      Mae.Salario = -399;
 
       MembrosFamilia.Add(Pai);
       MembrosFamilia.Add(Mae);
