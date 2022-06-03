@@ -12,6 +12,8 @@ namespace CasaPopularTests
     private readonly List<Pessoa> MembrosFamiliaGarcia;
     private readonly Familia FamiliaSerafim;
     private readonly List<Pessoa> MembrosFamiliaSerafim;
+    private readonly Familia FamiliaJo;
+    private readonly List<Pessoa> MembrosFamiliaJo;
     private readonly RendaAte900 RendaAte900;
     private readonly RendaDe901A1500 RendaDe901A1500;
     private readonly TresOuMaisDependentes TresOuMaisDependentes;
@@ -25,6 +27,9 @@ namespace CasaPopularTests
 
       FamiliaSerafim = new Familia();
       MembrosFamiliaSerafim = new List<Pessoa>();
+
+      FamiliaJo = new Familia();
+      MembrosFamiliaJo = new List<Pessoa>();
 
       RendaAte900 = new RendaAte900();
       RendaDe901A1500 = new RendaDe901A1500();
@@ -51,17 +56,26 @@ namespace CasaPopularTests
       MembrosFamiliaGarcia.Add(new Pessoa { Nome = "Marcio Garcia", DataNascimento = DateTime.Now, Dependente = true });
       MembrosFamiliaGarcia.Add(new Pessoa { Nome = "Joana Garcia", DataNascimento = DateTime.Now, Dependente = true });
       MembrosFamiliaGarcia.Add(new Pessoa { Nome = "Itamar Garcia", DataNascimento = DateTime.Now, Dependente = true });
+
       MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Leon Serafim", Salario = 500 });
       MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Alan Serafim" , Salario = 800});
       MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Caua Serafim", DataNascimento = DateTime.Now, Dependente = true });
       MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Josias Serafim", DataNascimento = DateTime.Now });
       MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Esdras Serafim", DataNascimento = DateTime.Now });
 
+      MembrosFamiliaJo.Add(new Pessoa { Nome = "Steba Jo", Salario = 900 });
+      MembrosFamiliaJo.Add(new Pessoa { Nome = "Alan Jo", Salario = 1000 });
+      MembrosFamiliaJo.Add(new Pessoa { Nome = "Jose Jo", DataNascimento = DateTime.Now, Dependente = true });
+      MembrosFamiliaJo.Add(new Pessoa { Nome = "Josias Jo", DataNascimento = DateTime.Now, Dependente = true });
+      MembrosFamiliaJo.Add(new Pessoa { Nome = "Simao Jo", DataNascimento = DateTime.Now });
+
       FamiliaGarcia.Membros = MembrosFamiliaGarcia;
       FamiliaSerafim.Membros = MembrosFamiliaSerafim;
+      FamiliaJo.Membros = MembrosFamiliaJo;
 
       ConstrutorFamiliasAptas.AdicionarFamilia(FamiliaGarcia);
       ConstrutorFamiliasAptas.AdicionarFamilia(FamiliaSerafim);
+      ConstrutorFamiliasAptas.AdicionarFamilia(FamiliaJo);
     }
 
     [Fact]
@@ -77,14 +91,14 @@ namespace CasaPopularTests
     }
 
     [Fact]
-    public void Deve_Retornar_Cinco_Pontos_Na_Ultima_Posicao()
+    public void Deve_Retornar_Tres_Pontos_Na_Ultima_Posicao()
     {
       List<Familia> familiasAptas = ConstrutorFamiliasAptas.Criar();
 
       var familiaApta = familiasAptas.LastOrDefault();
-      var paiSerafim = familiaApta.Membros.Select(m=> m.Nome = "Leon Serafim");
+      var paiSerafim = familiaApta.Membros.Select(m=> m.Nome = "Steba Jo");
 
-      Assert.Equal(5, familiaApta.Pontuacao);
+      Assert.Equal(2, familiaApta.Pontuacao);
       Assert.True(paiSerafim.Any());
     }
   }
