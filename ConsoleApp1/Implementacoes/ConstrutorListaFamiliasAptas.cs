@@ -33,7 +33,7 @@ namespace CasaPopularTests
         CalcularPontuacao(familia);
       }
 
-      return Familias.OrderBy(f => f.Pontuacao).ToList();
+      return Familias.OrderByDescending(f => f.Pontuacao).ToList();
     }
 
     private void CalcularPontuacao(Familia familia)

@@ -88,7 +88,7 @@ namespace CasaPopularTests
     }
 
     [Fact]
-    public void Deve_Retornar_Nove_Pontos_Renda_Ate_900_Tres_Dependentes()
+    public void Deve_Retornar_Oito_Pontos_Renda_Ate_900_Tres_Dependentes()
     {
       Pai.Salario = 300;
       Mae.Salario = 599;
