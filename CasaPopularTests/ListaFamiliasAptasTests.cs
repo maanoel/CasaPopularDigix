@@ -1,8 +1,9 @@
-using CasaPopular.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using System;
+using CasaPopular.Model;
+using CasaPopular;
 
 namespace CasaPopularTests
 {

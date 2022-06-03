@@ -1,7 +1,7 @@
 ﻿using CasaPopular.Interfaces;
 using CasaPopular.Model;
 
-namespace CasaPopularTests
+namespace CasaPopular
 {
   public class RendaDe901A1500 : IComandoCalculoPotuacao
   {

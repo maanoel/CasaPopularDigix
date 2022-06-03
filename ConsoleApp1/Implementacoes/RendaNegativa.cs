@@ -3,12 +3,12 @@ using CasaPopular.Model;
 
 namespace CasaPopular
 {
-  public class TresOuMaisDependentes : IComandoCalculoPotuacao
+  public class RendaNegativa : IComandoCalculoPotuacao
   {
     public int Calcular(Familia familia)
     {
-      if (familia.QuantidadeDependentes() >= 3)
-        return 3;
+      if (familia.RendaTotal() < 0)
+        return 7;
 
       return 0;
     }

@@ -3,7 +3,7 @@ using CasaPopular.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CasaPopularTests
+namespace CasaPopular
 {
   public class ConstrutorListaFamiliasAptas
   {
