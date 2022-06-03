@@ -12,7 +12,13 @@ namespace CasaPopularTests
     private readonly Pessoa Pai;
     private readonly Pessoa Filha;
     private readonly Pessoa Filho;
+    private readonly Pessoa Cacula;
     private readonly List<Pessoa> MembrosFamilia;
+    private readonly RendaAte900 RendaAte900;
+    private readonly RendaDe901A1500 RendaDe901A1500;
+    private readonly TresOuMaisDependentes TresOuMaisDependentes;
+    private readonly UmOuDoisDependentes UmOuDoisDependentes;
+    private readonly ConstrutorListaFamiliasAptas ConstrutorFamiliasAptas;
 
     public CasaPopularTests()
     {
@@ -20,51 +26,89 @@ namespace CasaPopularTests
       Pai = new Pessoa();
       Filha = new Pessoa();
       Filho = new Pessoa();
+      Cacula = new Pessoa();
       MembrosFamilia = new List<Pessoa>();
+      RendaAte900 = new RendaAte900();
+      RendaDe901A1500 = new RendaDe901A1500();
+      TresOuMaisDependentes = new TresOuMaisDependentes();
+      UmOuDoisDependentes = new UmOuDoisDependentes();
+      ConstrutorFamiliasAptas = new ConstrutorListaFamiliasAptas();
+
+      AdicionarComandoConstrutor();
+      MockValoresIniciais();
     }
 
-    [Fact]
-    public void Deve_Retornar_Tres_Pontos_Renda_Ate_900()
+    private void AdicionarComandoConstrutor()
+    {
+      ConstrutorFamiliasAptas.AdicionarComandoDeCalculo(RendaAte900);
+      ConstrutorFamiliasAptas.AdicionarComandoDeCalculo(RendaDe901A1500);
+      ConstrutorFamiliasAptas.AdicionarComandoDeCalculo(TresOuMaisDependentes);
+      ConstrutorFamiliasAptas.AdicionarComandoDeCalculo(UmOuDoisDependentes);
+    }
+
+    private void MockValoresIniciais()
     {
       Filho.Nome = "Marcio Garcia";
-      Filho.Dependente = true;
       Filho.DataNascimento = DateTime.Now;
+      Filho.Dependente = true;
 
       Filha.Nome = "Joana Garcia";
-      Filha.Dependente = true;
       Filha.DataNascimento = DateTime.Now;
+      Filha.Dependente = true;
+
+      Cacula.Nome = "Vitor Garcia";
+      Cacula.DataNascimento = DateTime.Now;
+      Cacula.Dependente = true;
 
       Pai.Nome = "João Garcia";
       Mae.Nome = "Mariana Garcia";
+    }
 
-      Pai.Salario = 200;
-      Mae.Salario = 600;
+    [Fact]
+    public void Deve_Retornar_Sete_Pontos_Renda_Ate_900_Dois_Dependentes()
+    {
+      Pai.Salario = 300;
+      Mae.Salario = 555;
 
-      MembrosFamilia.Add(Filho);
-      MembrosFamilia.Add(Filha);
       MembrosFamilia.Add(Pai);
       MembrosFamilia.Add(Mae);
+      MembrosFamilia.Add(Filho);
+      MembrosFamilia.Add(Filha);
 
       var familia = new Familia();
       familia.Membros = MembrosFamilia;
 
-      var rendaAte900 = new RendaAte900();
-      var rendaDe901A1500 = new RendaDe901A1500();
-      var tresOuMaisDependentes = new TresOuMaisDependentes();
-      var umOuDoisDependentes = new UmOuDoisDependentes();
+      ConstrutorFamiliasAptas.AdicionarFamilia(familia);
 
-      var construtorFamiliasAptas = new ConstrutorListaFamiliasAptas();
-      construtorFamiliasAptas.AdicionarFamilia(familia);
-      construtorFamiliasAptas.AdicionarComandoDeCalculo(rendaAte900);
-      construtorFamiliasAptas.AdicionarComandoDeCalculo(rendaDe901A1500);
-      construtorFamiliasAptas.AdicionarComandoDeCalculo(tresOuMaisDependentes);
-      construtorFamiliasAptas.AdicionarComandoDeCalculo(umOuDoisDependentes);
-
-      List<Familia> familiasAptas = construtorFamiliasAptas.Criar();
+      List<Familia> familiasAptas = ConstrutorFamiliasAptas.Criar();
 
       var familiaApta = familiasAptas.FirstOrDefault();
 
       Assert.Equal(7, familiaApta.Pontuacao);
+    }
+
+    [Fact]
+    public void Deve_Retornar_Nove_Pontos_Renda_Ate_900_Tres_Dependentes()
+    {
+      Pai.Salario = 300;
+      Mae.Salario = 599;
+
+      MembrosFamilia.Add(Pai);
+      MembrosFamilia.Add(Mae);
+      MembrosFamilia.Add(Filho);
+      MembrosFamilia.Add(Filha);
+      MembrosFamilia.Add(Cacula);
+
+      var familia = new Familia();
+      familia.Membros = MembrosFamilia;
+
+      ConstrutorFamiliasAptas.AdicionarFamilia(familia);
+
+      List<Familia> familiasAptas = ConstrutorFamiliasAptas.Criar();
+
+      var familiaApta = familiasAptas.FirstOrDefault();
+
+      Assert.Equal(8, familiaApta.Pontuacao);
     }
   }
 }
