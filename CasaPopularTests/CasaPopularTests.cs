@@ -35,13 +35,20 @@ namespace CasaPopularTests
       MembrosFamilia.Add(Pai);
       MembrosFamilia.Add(Mae);
 
-      Familia familia = new Familia();
+      var familia = new Familia();
       familia.Membros = MembrosFamilia;
 
-      IComandoCalculoPotuacao rendaAte900 = new RendaAte900();
-      IComandoCalculoPotuacao rendaDe901A1500 = new RendaDe901A1500();
-      IComandoCalculoPotuacao tresOuMaisDependentes = new TresOuMaisDependentes();
-      IComandoCalculoPotuacao umOuDoisDependentes = new UmOuDoisDependentes();
+      var rendaAte900 = new RendaAte900();
+      var rendaDe901A1500 = new RendaDe901A1500();
+      var tresOuMaisDependentes = new TresOuMaisDependentes();
+      var umOuDoisDependentes = new UmOuDoisDependentes();
+
+      var ContrutorFamilia = new ConstrutorListaFamiliasAptas();
+      ContrutorFamilia.AdicionarFamilia(familia);
+      ContrutorFamilia.AdicionarComandoDeCalculo(rendaAte900);
+      ContrutorFamilia.AdicionarComandoDeCalculo(rendaDe901A1500);
+      ContrutorFamilia.AdicionarComandoDeCalculo(tresOuMaisDependentes);
+      ContrutorFamilia.AdicionarComandoDeCalculo(umOuDoisDependentes);
     }
   }
 }
