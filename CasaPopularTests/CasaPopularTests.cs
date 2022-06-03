@@ -43,12 +43,15 @@ namespace CasaPopularTests
       var tresOuMaisDependentes = new TresOuMaisDependentes();
       var umOuDoisDependentes = new UmOuDoisDependentes();
 
-      var ContrutorFamilia = new ConstrutorListaFamiliasAptas();
-      ContrutorFamilia.AdicionarFamilia(familia);
-      ContrutorFamilia.AdicionarComandoDeCalculo(rendaAte900);
-      ContrutorFamilia.AdicionarComandoDeCalculo(rendaDe901A1500);
-      ContrutorFamilia.AdicionarComandoDeCalculo(tresOuMaisDependentes);
-      ContrutorFamilia.AdicionarComandoDeCalculo(umOuDoisDependentes);
+      var construtorFamiliasAptas = new ConstrutorListaFamiliasAptas();
+      construtorFamiliasAptas.AdicionarFamilia(familia);
+      construtorFamiliasAptas.AdicionarComandoDeCalculo(rendaAte900);
+      construtorFamiliasAptas.AdicionarComandoDeCalculo(rendaDe901A1500);
+      construtorFamiliasAptas.AdicionarComandoDeCalculo(tresOuMaisDependentes);
+      construtorFamiliasAptas.AdicionarComandoDeCalculo(umOuDoisDependentes);
+
+      IEnumerable<Familia> familiasAptas = construtorFamiliasAptas.Criar();
+
     }
   }
 }
