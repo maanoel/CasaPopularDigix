@@ -1,23 +1,28 @@
 ﻿using CasaPopular.Interfaces;
 using CasaPopular.Model;
-using System;
+using System.Collections.Generic;
 
 namespace CasaPopularTests
 {
   public class ConstrutorListaFamiliasAptas
   {
+    private readonly List<IComandoCalculoPotuacao> ComandoCalculoPontuacao;
+    private readonly List<Familia> Familias;
+
     public ConstrutorListaFamiliasAptas()
     {
+      ComandoCalculoPontuacao = new List<IComandoCalculoPotuacao>();
+      Familias = new List<Familia>();
     }
 
     public void AdicionarFamilia(Familia familia)
     {
-      throw new NotImplementedException();
+      Familias.Add(familia);
     }
 
-    public void AdicionarComandoDeCalculo(IComandoCalculoPotuacao rendaAte900)
+    public void AdicionarComandoDeCalculo(IComandoCalculoPotuacao comandoDeCalculo)
     {
-      throw new NotImplementedException();
+      ComandoCalculoPontuacao.Add(comandoDeCalculo);
     }
   }
 }
