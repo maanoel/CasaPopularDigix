@@ -116,7 +116,7 @@ namespace CasaPopularTests
     }
 
     [Fact]
-    public void Deve_Retornar_Sete_Pontos_Renda_Negativa_Sem_Dependentes()
+    public void Deve_Retornar_Doze_Pontos_Renda_Negativa_Sem_Dependentes()
     {
       Pai.Salario = -300;
       Mae.Salario = -399;
@@ -133,7 +133,7 @@ namespace CasaPopularTests
 
       var familiaApta = familiasAptas.FirstOrDefault();
 
-      Assert.Equal(7, familiaApta.Pontuacao);
+      Assert.Equal(12, familiaApta.Pontuacao);
     }
   }
 }
