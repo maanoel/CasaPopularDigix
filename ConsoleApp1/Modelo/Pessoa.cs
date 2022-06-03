@@ -11,7 +11,7 @@ namespace CasaPopular.Model
 
     public int Idade()
     {
-      if (DataNascimento == null) return 0;
+      if (DataNascimento == DateTime.MinValue) return 0;
 
       int idade = DateTime.Now.Year - DataNascimento.Year;
 
