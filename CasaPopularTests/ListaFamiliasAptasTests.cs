@@ -51,8 +51,8 @@ namespace CasaPopularTests
       MembrosFamiliaGarcia.Add(new Pessoa { Nome = "Marcio Garcia", DataNascimento = DateTime.Now, Dependente = true });
       MembrosFamiliaGarcia.Add(new Pessoa { Nome = "Joana Garcia", DataNascimento = DateTime.Now, Dependente = true });
       MembrosFamiliaGarcia.Add(new Pessoa { Nome = "Itamar Garcia", DataNascimento = DateTime.Now, Dependente = true });
-      MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Leon Serafim" });
-      MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Alan Serafim" });
+      MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Leon Serafim", Salario = 500 });
+      MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Alan Serafim" , Salario = 800});
       MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Caua Serafim", DataNascimento = DateTime.Now, Dependente = true });
       MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Josias Serafim", DataNascimento = DateTime.Now });
       MembrosFamiliaSerafim.Add(new Pessoa { Nome = "Esdras Serafim", DataNascimento = DateTime.Now });
@@ -70,8 +70,22 @@ namespace CasaPopularTests
       List<Familia> familiasAptas = ConstrutorFamiliasAptas.Criar();
 
       var familiaApta = familiasAptas.FirstOrDefault();
+      var paiGarcia = familiaApta.Membros.Select(m => m.Nome == "João Garcia");
 
       Assert.Equal(8, familiaApta.Pontuacao);
+      Assert.True(paiGarcia.Any());
+    }
+
+    [Fact]
+    public void Deve_Retornar_Cinco_Pontos_Na_Ultima_Posicao()
+    {
+      List<Familia> familiasAptas = ConstrutorFamiliasAptas.Criar();
+
+      var familiaApta = familiasAptas.LastOrDefault();
+      var paiSerafim = familiaApta.Membros.Select(m=> m.Nome = "Leon Serafim");
+
+      Assert.Equal(5, familiaApta.Pontuacao);
+      Assert.True(paiSerafim.Any());
     }
   }
 }
