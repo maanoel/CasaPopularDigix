@@ -1,6 +1,8 @@
 using CasaPopular.Model;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
+using System;
 
 namespace CasaPopularTests
 {
@@ -22,12 +24,21 @@ namespace CasaPopularTests
     }
 
     [Fact]
-    public void Deve_Retornar_Cinco_Pontos_Renda_Ate_9000()
+    public void Deve_Retornar_Tres_Pontos_Renda_Ate_900()
     {
-      Filho.Salario = 1000;
-      Filha.Salario = 2000;
-      Pai.Salario = 2000;
-      Mae.Salario = 3000;
+      Filho.Nome = "Marcio Garcia";
+      Filho.Dependente = true;
+      Filho.DataNascimento = DateTime.Now;
+
+      Filha.Nome = "Joana Garcia";
+      Filha.Dependente = true;
+      Filha.DataNascimento = DateTime.Now;
+
+      Pai.Nome = "João Garcia";
+      Mae.Nome = "Mariana Garcia";
+
+      Pai.Salario = 200;
+      Mae.Salario = 600;
 
       MembrosFamilia.Add(Filho);
       MembrosFamilia.Add(Filha);
@@ -49,9 +60,11 @@ namespace CasaPopularTests
       construtorFamiliasAptas.AdicionarComandoDeCalculo(tresOuMaisDependentes);
       construtorFamiliasAptas.AdicionarComandoDeCalculo(umOuDoisDependentes);
 
-      IList<Familia> familiasAptas = construtorFamiliasAptas.Criar();
-      
+      List<Familia> familiasAptas = construtorFamiliasAptas.Criar();
 
+      var familiaApta = familiasAptas.FirstOrDefault();
+
+      Assert.Equal(7, familiaApta.Pontuacao);
     }
   }
 }

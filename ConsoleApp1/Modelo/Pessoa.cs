@@ -7,6 +7,7 @@ namespace CasaPopular.Model
     public DateTime DataNascimento { get; set; }
     public decimal Salario { get; set; }
     public bool Dependente { get; set; }
+    public string Nome { get; set; }
 
     public int Idade()
     {

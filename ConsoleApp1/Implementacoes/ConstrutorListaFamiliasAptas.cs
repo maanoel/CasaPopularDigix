@@ -26,7 +26,7 @@ namespace CasaPopularTests
       ComandosCalculoPontuacao.Add(comandoDeCalculo);
     }
 
-    public IList<Familia> Criar()
+    public List<Familia> Criar()
     {
       foreach (var familia in Familias)
       {
@@ -40,7 +40,7 @@ namespace CasaPopularTests
     {
       foreach (var calculoPontuacao in ComandosCalculoPontuacao)
       {
-        calculoPontuacao.Calcular(familia);
+        familia.Pontuacao += calculoPontuacao.Calcular(familia);
       }
     }
   }

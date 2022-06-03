@@ -7,7 +7,7 @@ namespace CasaPopularTests
   {
     public int Calcular(Familia familia)
     {
-      if (familia.RendaTotal() >= 900)
+      if (familia.RendaTotal() <= 900)
         return 5;
 
       return 0;
