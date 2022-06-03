@@ -112,7 +112,7 @@ namespace CasaPopularTests
     }
 
     [Fact]
-    public void Deve_Retornar_Zero_Pontos_Renda_Acima_Sem_Dependentes()
+    public void Deve_Retornar_Zero_Pontos_Renda_Acima_1500_Sem_Dependentes()
     {
       Pai.Salario = 1400;
       Mae.Salario = 599;
