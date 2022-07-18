@@ -23,14 +23,15 @@ namespace CasaPopularTests
 
     public ListaFamiliasAptasTests()
     {
-      FamiliaGarcia = new Familia();
       MembrosFamiliaGarcia = new List<Pessoa>();
+      FamiliaGarcia = new Familia(0, MembrosFamiliaGarcia);
 
-      FamiliaSerafim = new Familia();
       MembrosFamiliaSerafim = new List<Pessoa>();
+      FamiliaSerafim = new Familia(0, MembrosFamiliaSerafim);
+      
 
-      FamiliaJo = new Familia();
       MembrosFamiliaJo = new List<Pessoa>();
+      FamiliaJo = new Familia(0, MembrosFamiliaJo);
 
       RendaAte900 = new RendaAte900();
       RendaDe901A1500 = new RendaDe901A1500();

@@ -33,14 +33,16 @@ namespace CasaPopular
         CalcularPontuacao(familia);
       }
 
-      return Familias.OrderByDescending(f => f.Pontuacao).ToList();
+      return Familias.OrderByDescending(f => f.PontosTotais()).ToList();
     }
 
     private void CalcularPontuacao(Familia familia)
     {
       foreach (var calculoPontuacao in ComandosCalculoPontuacao)
       {
-        familia.Pontuacao += calculoPontuacao.Calcular(familia);
+        var pontuacao = calculoPontuacao.Calcular(familia);
+
+        familia.SomarPontos(pontuacao);
       }
     }
   }
