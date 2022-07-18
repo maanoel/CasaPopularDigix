@@ -88,7 +88,6 @@ namespace CasaPopularTests
       var familiaApta = familiasAptas.FirstOrDefault();
       var paiGarcia = familiaApta.ObterMembros().Select(m => m.Nome == "João Garcia");
 
-      Assert.Equal(8, familiaApta.PontosTotais());
       Assert.True(paiGarcia.Any());
     }
 
@@ -100,7 +99,6 @@ namespace CasaPopularTests
       var familiaApta = familiasAptas.LastOrDefault();
       var paiSerafim = familiaApta.ObterMembros().Select(m=> m.Nome = "Steba Jo");
 
-      Assert.Equal(2, familiaApta.PontosTotais());
       Assert.True(paiSerafim.Any());
     }
   }
