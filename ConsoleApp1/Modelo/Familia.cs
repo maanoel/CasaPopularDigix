@@ -33,7 +33,7 @@ namespace CasaPopular.Model
     }
 
     public List<Pessoa> ObterMembros() {
-      return Membros;
+      return new List<Pessoa>(Membros);
     }
 
     public void SomarPontos(int pontuacao) {
