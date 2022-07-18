@@ -24,20 +24,24 @@ namespace CasaPopular.Model
       return Membros.Count(m => m.Dependente && m.Idade() < 18);
     }
 
-    public int PontosTotais() {
+    public int PontosTotais()
+    {
       return Pontuacao;
     }
 
-    public void DefinirMembro(Pessoa pessoa) {
+    public void SomarPontos(int pontuacao)
+    {
+      Pontuacao += pontuacao;
+    }
+
+    public void DefinirMembro(Pessoa pessoa)
+    {
       Membros.Add(pessoa);
     }
 
-    public List<Pessoa> ObterMembros() {
+    public List<Pessoa> ObterMembros()
+    {
       return new List<Pessoa>(Membros);
-    }
-
-    public void SomarPontos(int pontuacao) {
-      Pontuacao += pontuacao;
     }
   }
 }
