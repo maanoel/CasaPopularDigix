@@ -80,7 +80,7 @@ namespace CasaPopularTests
       MembrosFamilia.Add(Filha);
 
       var familia = new Familia();
-      familia.Membros = MembrosFamilia;
+      familia.DefinirMembros(MembrosFamilia);
 
       ConstrutorFamiliasAptas.AdicionarFamilia(familia);
 
@@ -88,7 +88,7 @@ namespace CasaPopularTests
 
       var familiaApta = familiasAptas.FirstOrDefault();
 
-      Assert.Equal(14, familiaApta.Pontuacao);
+      Assert.Equal(14, familiaApta.PontosTotais());
     }
 
     [Fact]
@@ -104,7 +104,7 @@ namespace CasaPopularTests
       MembrosFamilia.Add(Cacula);
 
       var familia = new Familia();
-      familia.Membros = MembrosFamilia;
+      familia.DefinirMembros(MembrosFamilia);
 
       ConstrutorFamiliasAptas.AdicionarFamilia(familia);
 
@@ -112,7 +112,7 @@ namespace CasaPopularTests
 
       var familiaApta = familiasAptas.FirstOrDefault();
 
-      Assert.Equal(15, familiaApta.Pontuacao);
+      Assert.Equal(15, familiaApta.PontosTotais());
     }
 
     [Fact]
@@ -125,7 +125,7 @@ namespace CasaPopularTests
       MembrosFamilia.Add(Mae);
 
       var familia = new Familia();
-      familia.Membros = MembrosFamilia;
+      familia.DefinirMembros(MembrosFamilia);
 
       ConstrutorFamiliasAptas.AdicionarFamilia(familia);
 
@@ -133,7 +133,7 @@ namespace CasaPopularTests
 
       var familiaApta = familiasAptas.FirstOrDefault();
 
-      Assert.Equal(12, familiaApta.Pontuacao);
+      Assert.Equal(12, familiaApta.PontosTotais());
     }
   }
 }

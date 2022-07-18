@@ -14,6 +14,10 @@ namespace CasaPopular.Model
       Membros = membros;
     }
 
+    public Familia()
+    {
+    }
+
     public decimal RendaTotal()
     {
       return Membros.Sum(m => m.Salario);
@@ -37,6 +41,11 @@ namespace CasaPopular.Model
     public void DefinirMembro(Pessoa pessoa)
     {
       Membros.Add(pessoa);
+    }
+
+    public void DefinirMembros(List<Pessoa> pessoas)
+    {
+      Membros = pessoas;
     }
 
     public List<Pessoa> ObterMembros()

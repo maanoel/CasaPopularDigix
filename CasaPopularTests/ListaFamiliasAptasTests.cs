@@ -71,9 +71,9 @@ namespace CasaPopularTests
       MembrosFamiliaJo.Add(new Pessoa { Nome = "Josias Jo", DataNascimento = DateTime.Now, Dependente = true });
       MembrosFamiliaJo.Add(new Pessoa { Nome = "Simao Jo", DataNascimento = DateTime.Now });
 
-      FamiliaGarcia.Membros = MembrosFamiliaGarcia;
-      FamiliaSerafim.Membros = MembrosFamiliaSerafim;
-      FamiliaJo.Membros = MembrosFamiliaJo;
+      FamiliaGarcia.DefinirMembros(MembrosFamiliaGarcia);
+      FamiliaSerafim.DefinirMembros(MembrosFamiliaSerafim);
+      FamiliaJo.DefinirMembros(MembrosFamiliaJo);
 
       ConstrutorFamiliasAptas.AdicionarFamilia(FamiliaGarcia);
       ConstrutorFamiliasAptas.AdicionarFamilia(FamiliaSerafim);
@@ -86,9 +86,9 @@ namespace CasaPopularTests
       List<Familia> familiasAptas = ConstrutorFamiliasAptas.Criar();
 
       var familiaApta = familiasAptas.FirstOrDefault();
-      var paiGarcia = familiaApta.Membros.Select(m => m.Nome == "João Garcia");
+      var paiGarcia = familiaApta.ObterMembros().Select(m => m.Nome == "João Garcia");
 
-      Assert.Equal(8, familiaApta.Pontuacao);
+      Assert.Equal(8, familiaApta.PontosTotais());
       Assert.True(paiGarcia.Any());
     }
 
@@ -98,9 +98,9 @@ namespace CasaPopularTests
       List<Familia> familiasAptas = ConstrutorFamiliasAptas.Criar();
 
       var familiaApta = familiasAptas.LastOrDefault();
-      var paiSerafim = familiaApta.Membros.Select(m=> m.Nome = "Steba Jo");
+      var paiSerafim = familiaApta.ObterMembros().Select(m=> m.Nome = "Steba Jo");
 
-      Assert.Equal(2, familiaApta.Pontuacao);
+      Assert.Equal(2, familiaApta.PontosTotais());
       Assert.True(paiSerafim.Any());
     }
   }
